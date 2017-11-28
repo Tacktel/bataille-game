@@ -1,0 +1,39 @@
+﻿<Window x:Class="Coinche.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Coinche Client" Height="467.632" Width="516.522" Background="#FF7CA0FF" ResizeMode="CanMinimize" Icon="media/white_cards.ico">
+    <Grid>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="68,8,0,0" Name="serverIP" VerticalAlignment="Top" Width="97" />
+        <Label Content="Server IP:" Height="28" HorizontalAlignment="Left" Margin="8,6,0,0" Name="label1" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="199,8,0,0" Name="serverPort" VerticalAlignment="Top" Width="47" />
+        <Label Content="Port:" Height="28" HorizontalAlignment="Left" Margin="166,6,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Local Name:" Height="28" HorizontalAlignment="Left" Margin="293,7,0,0" Name="label4" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="373,8,0,0" Name="localName" VerticalAlignment="Top" Width="117" />
+        <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="5,346,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="62,348,0,0" Name="messageText" KeyUp="MessageText_KeyUp" VerticalAlignment="Top" Width="281" />
+        <Button Content="Send" Height="23" HorizontalAlignment="Left" Margin="362,348,0,0" Name="sendMessageButton" Click="SendMessageButton_Click" VerticalAlignment="Top" Width="117"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="10,48,0,0" Name="connectButton" Click="ConnectToServer_Click" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Play with others" HorizontalAlignment="Left" Margin="309,48,0,0" Name="playerButton" VerticalAlignment="Top" Width="101" Click="playerButton_Click"/>
+        <Button Content="Play with AI" HorizontalAlignment="Left" Margin="415,48,0,0" Name="aiButton" VerticalAlignment="Top" Width="75" Click="aiButton_Click"/>
+        <RichTextBox HorizontalAlignment="Left" Height="161" Margin="10,78,0,0" Name="richChatBox" VerticalAlignment="Top" Width="480" VerticalScrollBarVisibility="Visible"/>
+        <Button Click="GetPlayersList_Click" Name="playersListButton" Margin="23,244,373,93">
+            <StackPanel>
+                <Image Source="media/players.png"/>
+                <TextBlock Height="21" Width="82"><Run Text="Who is online ?"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="putButton" Margin="361,244,32,93" Click="putButton_Click">
+            <StackPanel>
+                <Image Source="media/put.png" Height="74" Width="83"/>
+                <TextBlock Height="21" Width="53"><Run Text="Put a card"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Content="Disconnect" Name="disconnectButton" HorizontalAlignment="Left" Margin="90,48,0,0" VerticalAlignment="Top" Width="75" Click="DisconnectButton_Click"/>
+        <Button Name="inventoryButton" Click="inventoryButton_Click" Margin="186,244,204,93">
+            <StackPanel>
+                <Image Source="media/cards-number.jpg" Height="72" Width="105"/>
+                <TextBlock Height="21" Width="92"><Run Text="Cards in my deck"/></TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

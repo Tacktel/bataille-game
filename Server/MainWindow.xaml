@@ -1,0 +1,15 @@
+﻿<Window x:Class="Coinche.Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Coinche server" Height="312.073" Width="520.678" Background="#FF7CA0FF" ResizeMode="CanMinimize" Closing="Window_Closing" Icon="media/black_cards.ico">
+    <Grid>
+        <RichTextBox HorizontalAlignment="Left" Height="161" Margin="10,77,0,0" Name="richChatBox" VerticalAlignment="Top" Width="357" VerticalScrollBarVisibility="Visible"/>
+        <Label Content="Connected clients:" Height="28" HorizontalAlignment="Left" Margin="372,53,0,0" Name="connectedClientsLabel" VerticalAlignment="Top" Width="110" />
+        <TextBox Height="161" HorizontalAlignment="Left" Margin="376,77,0,0" Name="connectedClientsBox" VerticalAlignment="Top" Width="117" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
+        <Label Content="Local Name:" Height="28" HorizontalAlignment="Left" Margin="152,10,0,0" Name="label4" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="232,11,0,0" Name="localName" VerticalAlignment="Top" Width="117" />
+        <Label Content="Message:" Height="28" HorizontalAlignment="Left" Margin="7,241,0,0" Name="label5" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="64,243,0,0" Name="messageText" KeyUp="MessageText_KeyUp" VerticalAlignment="Top" Width="305" />
+        <Button Content="Send" Height="23" HorizontalAlignment="Left" Margin="376,243,0,0" Name="sendMessageButton" Click="SendMessageButton_Click"  VerticalAlignment="Top" Width="117"/>
+    </Grid>
+</Window>

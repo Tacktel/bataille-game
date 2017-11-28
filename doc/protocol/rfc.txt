@@ -1,0 +1,224 @@
+
+
+
+
+Interepi Epitech Task Force                       C. Charles Paulet, Ed.
+Internet-Draft                                            Charles Paulet
+Intended status: Informational                         November 14, 2017
+Expires: May 18, 2018
+
+
+                            Coinche protocol
+                          the coinche protocol
+
+Abstract
+
+   This memo defines the Coinche protocol Discussion and suggestions for
+   improvement are requested.  The Coinche protocol has been developped
+   over the last a week at Epitech Nantes by the "C'etait pas .net
+   client ?" team.  Distribution of this memo is unlimited.
+
+   The protocol is a binary-based protocol, with the simplest client
+   being any socket program capable of discussing with the servers via a
+   socket.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 18, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+
+
+
+Charles Paulet            Expires May 18, 2018                  [Page 1]
+
+Internet-Draft                   Spider                    November 2017
+
+
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  A protocol  . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.2.  servers . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.3.  clients . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Message and derivates . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  CHAT  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.2.  CONNECT . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  LIST  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.4.  PLAYER_PLAY . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.5.  AI_PLAY . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     2.6.  PUTTED  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     2.7.  INVENTORY . . . . . . . . . . . . . . . . . . . . . . . .   4
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   The original specification of the Coinche.
+
+1.1.  A protocol
+
+   Data transfered through socket is binary data.  It corresponds to a
+   Message object that is serialized via Protobuf.net library.  A
+   Message corresponds to an operation required by the client to the
+   server en vice-versa.  Thereby, a Message can be type and such can be
+   a CHAT, a CONNECT, a LIST, a PLAYER_PLAY, an AI_PLAY, a, PUTTED or an
+   INVENTORY message.  A message is constructed as this :
+
+      CoincheHeader : type of message
+
+      SourceIdentifier : emitter id
+
+      SourceName : emitter name
+
+      MessageContent : message content
+
+      MessageIndex : numbering
+
+      RelayCount : counting broadcast
+
+
+
+
+
+
+
+Charles Paulet            Expires May 18, 2018                  [Page 2]
+
+Internet-Draft                   Spider                    November 2017
+
+
+1.2.  servers
+
+   The servers forms the backbone of Coinche, providing a point to which
+   clients may connect to to play.  An account is required to launch a
+   server.
+
+1.3.  clients
+
+   A client is anything connecting to a server that is not another
+   server.  Each client is distinguished from other clients by a unique
+   id : the source identifier.  Clients between themselves thanks to the
+   below Spider protocol definition and especially via the CHAT message
+   which allows them to chat.
+
+2.  Message and derivates
+
+   The protocol as described herein is for use with both client to
+   client and client to server connections.  Message that are now
+   properly typed MUST be dropped.
+
+2.1.  CHAT
+
+   A chat message : its content is displayed to the client/server
+
+2.2.  CONNECT
+
+   A connect event : the contents contains the name of the player that
+   want to connect to the server
+
+2.3.  LIST
+
+   A player listing event : client wants to fetch the players list on
+   the server.  It is return as follows :
+
+      [ empty ]
+
+      [ ange ]
+
+      [ belial, cthulu ]
+
+2.4.  PLAYER_PLAY
+
+   Game init event : a client is ready to play with others
+
+
+
+
+
+
+
+
+Charles Paulet            Expires May 18, 2018                  [Page 3]
+
+Internet-Draft                   Spider                    November 2017
+
+
+2.5.  AI_PLAY
+
+   Game init event : a client is ready to play vs server
+
+2.6.  PUTTED
+
+   Hand move : a client picked a random card from its deck
+
+2.7.  INVENTORY
+
+   Client Deck event : a client wants to know how many cards is left in
+   its deck
+
+Author's Address
+
+   Charles Paulet (editor)
+   Charles Paulet
+   Nantes
+   France
+
+   Phone: +44 7889 488 335
+   Email: charles.paulet@epitech.eu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Charles Paulet            Expires May 18, 2018                  [Page 4]
